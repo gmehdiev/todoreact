@@ -27,6 +27,7 @@ function App() {
   const removePost = (post, value) => {
     const index = posts.find(p => p.id == post.id)
     index[value] = !index[value];
+    index['isCurrent'] = !index['isCurrent'];
     console.log(posts)
   }
 
@@ -36,9 +37,6 @@ function App() {
   return (
     <div>
       <Navbar filterPosts={filterPosts}/>
-      <button onClick={(event) => filterPosts(event.target.value)} value='isDelete'>Deleted post</button>
-      <button onClick={(event) => filterPosts(event.target.value)} value='isCompleted'>Completed post</button>
-      <button onClick={(event) => filterPosts(event.target.value)} value='isCurrent'>Current post</button>
       <form>
         <input onChange={e => setPost(e.target.value)} type="text" placeholder="текст"/>
         <button onClick={addNewPost}>отправить</button>
