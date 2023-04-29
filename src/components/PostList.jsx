@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Post from "./Post";
 
 const PostList = ({posts, remove, value}) => {
-
+    const [buttonClick, setButtonClick] = useState('')
     const [currentPost, setCurrentPost] = useState([]);
+    const buttonClicked = (time) => {
+        setButtonClick(time);
+    }
 
-    useState(()=>{
+    
+    useEffect(()=>{
+        console.log(buttonClick)
         console.log(value)
         const data = posts.filter((post)=> post[value] == true)
-        console.log(`asdasd${data}`)
         setCurrentPost(data)
-    },[value]) 
+    },[value, posts, buttonClick]) 
 
     return(
         <div>
-            {currentPost.map((post) => <Post remove={remove} post={post}/>)}
+            {currentPost.map((post) => <Post remove={remove} clicked={buttonClicked} post={post}/>)}
         </div>
     )
 

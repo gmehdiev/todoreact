@@ -28,8 +28,8 @@ function App() {
     console.log(posts)
   }
 
-  const [filterPost, setFilterPost] = useState('');
-  const [posts, setPosts] = useState([{id: 1682793685429, post: 'we', isDelete: false, isCompleted: false, isCurrent: true}]);
+  const [filterPost, setFilterPost] = useState();
+  const [posts, setPosts] = useState([]);
   const [post, setPost] = useState('');
   return (
     <div>
@@ -40,7 +40,7 @@ function App() {
         <input onChange={e => setPost(e.target.value)} type="text" placeholder="текст"/>
         <button onClick={addNewPost}>отправить</button>
       </form>
-      <PostList value={filterPost} remove={removePost} posts={posts}/>
+      <PostList value={filterPost || 'isCurrent'} remove={removePost} posts={posts}/>
     </div>
   );
 }
