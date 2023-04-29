@@ -1,5 +1,7 @@
 import { useState } from "react";
 import PostList from "./components/PostList";
+import Button from "./components/ui/Button";
+import Navbar from "./components/Navbar";
 
 
 function App() {
@@ -33,6 +35,7 @@ function App() {
   const [post, setPost] = useState('');
   return (
     <div>
+      <Navbar filterPosts={filterPosts}/>
       <button onClick={(event) => filterPosts(event.target.value)} value='isDelete'>Deleted post</button>
       <button onClick={(event) => filterPosts(event.target.value)} value='isCompleted'>Completed post</button>
       <button onClick={(event) => filterPosts(event.target.value)} value='isCurrent'>Current post</button>
