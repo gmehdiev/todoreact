@@ -41,7 +41,7 @@ function App() {
       const index = {...post}
       index[value] = !index[value];
       index.isCurrent = !index.isCurrent;
-      const response = await axios.put(`http://localhost:3001/todolists`, index);
+      const response = await axios.patch(`http://localhost:3001/todolists/${post._id}`, index);
       console.log(response.data);
     } catch (error) {
       console.log(error);
