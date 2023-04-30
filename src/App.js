@@ -48,7 +48,7 @@ function App() {
       <Navbar filterPosts={filterPosts}/>
       <form>
         <input value={post} onChange={e => setPost(e.target.value)} type="text" placeholder="текст" required/>
-        <button onClick={addNewPost}>отправить</button>
+      <button onClick={(event) => {filterPosts(event.target.value); addNewPost(event)} } value={'isCurrent'}>отправить</button>
       </form>
       <PostList value={filterPost || 'isCurrent'} remove={removePost} posts={posts}/>
     </div>

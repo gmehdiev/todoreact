@@ -13,10 +13,10 @@ const PostButtons = ({post,remove,clicked}) => {
             <div className="flex">
             <Button className="post-button" value='isCompleted' onClick={(event)=>{
                 remove(post, event.target.value) 
-                clicked(Date.now())}}><img src={doneIcon} alt="" /></Button>
+                clicked(Date.now())}}>Сделанно</Button>
             <Button className="post-button" value='isDelete' onClick={(event)=>{
                 remove(post, event.target.value) 
-                clicked(Date.now())}}><img src={deleteIcon} alt="" /></Button>  
+                clicked(Date.now())}}>Удалить</Button>  
             </div>
         )
     }
@@ -26,7 +26,7 @@ const PostButtons = ({post,remove,clicked}) => {
             <div className="flex">
             <Button className="post-button" value='isDelete' onClick={(event)=>{
                 remove(post, event.target.value) 
-                clicked(Date.now())}}><img src={returnIcon} alt="" /></Button>   
+                clicked(Date.now())}}>Вернуть</Button>   
             </div>
         )
     }

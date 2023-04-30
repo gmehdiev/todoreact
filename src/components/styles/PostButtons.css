@@ -3,9 +3,10 @@
 }
 
 .post-button {
-    border: none;
+    border: 1px solid rgb(193, 198, 239);
     background-color: white;
-    width: 50px;
+    width: 80px;
+    margin-left: 10px;
 }
 
 .post-button img {

@@ -10,8 +10,10 @@ const Post = ({post,remove,clicked}) => {
 
     return(
         <div className="post">
+            <div className="date-and-title">
             <div>{post.date}</div>
-            <div>{post.post}</div>
+            <div className="postTitle">{post.post}</div>
+            </div>
             <PostButtons post={post} value='isDelete' remove={remove} clicked={clicked}
                 />
             {/* <Button value='isDelete' onClick={(event)=>{

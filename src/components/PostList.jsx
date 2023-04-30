@@ -18,7 +18,8 @@ const PostList = ({posts, remove, value}) => {
 
     return(
         <div>
-            {currentPost.map((post) => <Post remove={remove} clicked={buttonClicked} post={post}/>)}
+            <div>{value}</div>
+            {currentPost.map((post) => <Post key={post.id} remove={remove} clicked={buttonClicked} post={post}/>)}
         </div>
     )
 
