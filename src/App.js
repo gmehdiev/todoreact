@@ -3,6 +3,7 @@ import PostList from "./components/PostList";
 import Button from "./components/ui/button/Button";
 import Navbar from "./components/Navbar";
 import './App.css'
+import axios from "axios";
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
     }
 
     const newPost = {
-      id: Date.now(),
+      key: Date.now(),
       date: new Date().toLocaleDateString("en-GB"),
       post,
       isDelete: false,
@@ -29,26 +30,53 @@ function App() {
     }
     setPosts([...posts, newPost])
     console.log(posts)
+    postData(newPost)
     setPost('')
   }
 
-
-  const removePost = (post, value) => {
-    const index = posts.find(p => p.id == post.id)
-    index[value] = !index[value];
-    index['isCurrent'] = !index['isCurrent'];
-    console.log(posts)
+  async function removePost(post, value) {
+    try {
+      console.log(post._id)
+      console.log(value)
+      const index = {...post}
+      index[value] = !index[value];
+      index.isCurrent = !index.isCurrent;
+      const response = await axios.put(`http://localhost:3001/todolists`, index);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+
+
+  // const removePost = (post, value) => {
+  //   const index = {...post}
+  //   index[value] = !index[value];
+  //   index.isCurrent = !index.isCurrent;
+  //   console.log(post)
+  //   console.log(index)
+  // }
 
   const [filterPost, setFilterPost] = useState();
   const [posts, setPosts] = useState([]);
   const [post, setPost] = useState('');
+
+  async function postData(data) {
+    try{
+      const response = await axios.post('http://localhost:3001/biba', data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
       <Navbar filterPosts={filterPosts}/>
       <form>
         <input value={post} onChange={e => setPost(e.target.value)} type="text" placeholder="текст" required/>
-      <button onClick={(event) => {filterPosts(event.target.value); addNewPost(event)} } value={'isCurrent'}>отправить</button>
+        <button onClick={(event) => {filterPosts(event.target.value); addNewPost(event)} } value={'isCurrent'}>отправить</button>
       </form>
       <PostList value={filterPost || 'isCurrent'} remove={removePost} posts={posts}/>
     </div>
