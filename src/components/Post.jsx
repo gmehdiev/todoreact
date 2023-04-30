@@ -1,16 +1,17 @@
 import React from "react";
-import Button from "./ui/Button";
+import Button from "./ui/button/Button";
 import PostButtons from "./PostButtons";
 
+
+import './styles/Post.css'
 const Post = ({post,remove,clicked}) => {
 
 
 
     return(
-        <div>
-            <div>{post.id}</div>
+        <div className="post">
+            <div>{post.date}</div>
             <div>{post.post}</div>
-            <div></div>
             <PostButtons post={post} value='isDelete' remove={remove} clicked={clicked}
                 />
             {/* <Button value='isDelete' onClick={(event)=>{

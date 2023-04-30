@@ -1,0 +1,13 @@
+.flex {
+    display: flex;
+}
+
+.post-button {
+    border: none;
+    background-color: white;
+    width: 50px;
+}
+
+.post-button img {
+    width: 30px;
+}
